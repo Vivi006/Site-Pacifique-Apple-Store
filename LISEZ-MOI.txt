@@ -1,0 +1,13 @@
+DEPLOIEMENT NETLIFY (2 minutes)
+1. Allez sur https://app.netlify.com/drop
+2. Glissez-deposez CE DOSSIER ENTIER (pacifique-netlify).
+3. C'est en ligne. Aucun Node.js, aucune commande.
+
+PHOTOS DES PRODUITS
+Mettez vos photos dans le dossier "images" avec ces noms exacts :
+  hero_pacifique_store_1790791894433.jpg
+  product_iphone_titanium_1790791904363.jpg
+  product_macbook_pro_1790791914535.jpg
+  product_streetwear_apparel_1790791925443.jpg
+  product_accessories_airpods_1790791935242.jpg
+Si une photo manque, le logo s'affiche a la place.

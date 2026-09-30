@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.jpeg">
+  <meta name="theme-color" content="#0B0A08">
+  <title>Catalogue | Pacifique Apple Store</title>
+  <meta name="description" content="Boutique Pacifique Apple Store Treichville - Vente d'appareils, vêtements et divers. Commande directe sur WhatsApp.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Syne"', '"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Syne', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #404040;
+    }
+  
+    /* ===== Palette affinée, tirée du logo ===== */
+    :root{--or:#F0B84A;--or-doux:#E2A638;--cuivre:#ED8936;--turquoise:#4FB3B0;--nuit:#0B0A08;--nuit-2:#14120E;--nuit-3:#1D1A14;--ligne:#2B261C;--creme:#F6EFE0}
+    html{scroll-behavior:smooth}
+    body{background:var(--nuit)!important;color:var(--creme);line-height:1.6}
+    .bg-neutral-950{background-color:var(--nuit)!important}
+    .bg-neutral-900{background-color:var(--nuit-2)!important}
+    .bg-neutral-800{background-color:var(--nuit-3)!important}
+    .border-neutral-800,.border-neutral-800\/80,.border-neutral-700{border-color:var(--ligne)!important}
+    .text-amber-400,.text-amber-300{color:var(--or)!important}
+    .text-teal-400,.text-teal-300{color:var(--turquoise)!important}
+    .bg-amber-500{background-color:var(--or-doux)!important}
+    .border-amber-400{border-color:var(--or)!important}
+    .text-neutral-300,.text-neutral-400{color:#CFC6B3!important}
+    .text-neutral-500{color:#9A917E!important}
+    h1,h2,h3,.font-display{letter-spacing:-.01em}
+    h1 .bg-clip-text{background-image:linear-gradient(90deg,var(--or),var(--cuivre) 55%,var(--turquoise))!important}
+    header.sticky{background:rgba(11,10,8,.88)!important;backdrop-filter:blur(14px)}
+    /* Boutons dorés */
+    .bg-amber-400,.bg-amber-500.text-neutral-950,a.bg-amber-400,button.bg-amber-400{background-image:linear-gradient(135deg,var(--or),var(--cuivre))!important;color:#1a1206!important;box-shadow:0 6px 20px -8px rgba(237,137,54,.55)}
+    /* Cartes produits */
+    #productsGrid>*{border-radius:1.1rem!important;background:linear-gradient(180deg,var(--nuit-2),var(--nuit))!important;border:1px solid var(--ligne)!important;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+    #productsGrid>*:hover{transform:translateY(-4px);border-color:rgba(240,184,74,.55)!important;box-shadow:0 18px 40px -18px rgba(240,184,74,.35)}
+    #productModal>div,#cartDrawer>div{backdrop-filter:blur(6px)}
+    input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--or)!important;outline-offset:2px}
+    ::-webkit-scrollbar-track{background:var(--nuit)}::-webkit-scrollbar-thumb{background:var(--ligne)}::-webkit-scrollbar-thumb:hover{background:var(--or-doux)}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+  
+    /* ===== Noir et crème : en-tête, accueil et pied de page noirs, contenu clair ===== */
+    body{background:#F7F1E3!important;color:#2A2418}
+    section.clair{background:#F7F1E3!important;color:#2A2418;border-color:#E3D8BE!important}
+    .clair .bg-neutral-950,.clair .bg-neutral-900,.clair .bg-neutral-900\/60{background-color:#FFFFFF!important}
+    .clair .bg-neutral-800,.clair .bg-neutral-850{background-color:#EFE6CF!important}
+    .clair .border-neutral-800,.clair .border-neutral-850,.clair .border-neutral-700{border-color:#E3D8BE!important}
+    .clair .text-white,.clair .text-neutral-100,.clair .text-neutral-200{color:#2A2418!important}
+    .clair .text-neutral-300,.clair .text-neutral-400{color:#6B604A!important}
+    .clair .text-neutral-500{color:#8A7E66!important}
+    .clair .text-amber-400,.clair .text-amber-300{color:#A86A10!important}
+    .clair .text-teal-400,.clair .text-teal-300{color:#2F8F8C!important}
+    .clair .text-emerald-400,.clair .text-emerald-300{color:#047857!important}
+    .clair .bg-amber-500.text-neutral-950,.clair .cat-tab.bg-amber-500{background-image:linear-gradient(135deg,#F0B84A,#ED8936)!important;color:#1A1206!important}
+    .clair #productsGrid>*{background:#FFFFFF!important;border:1px solid #E3D8BE!important;box-shadow:0 10px 26px -18px rgba(60,40,10,.35)}
+    .clair #productsGrid>*:hover{border-color:#ED8936!important;box-shadow:0 18px 38px -18px rgba(237,137,54,.45)}
+    .clair input,.clair select{color:#2A2418;background:#FFFFFF!important}
+    .clair input::placeholder{color:#8A7E66}
+    .clair input:focus,.clair select:focus,.clair button:focus-visible,.clair a:focus-visible{outline-color:#ED8936!important}
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-amber-500/30 selection:text-amber-200 pb-16 md:pb-0">
+
+  <!-- ==================== TOP ANNOUNCEMENT ==================== -->
+  <div class="bg-neutral-900 text-neutral-300 text-xs py-1.5 px-3 sm:px-4 border-b border-neutral-800/80">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+      <div class="flex items-center gap-1.5 sm:gap-2 truncate text-[10px] sm:text-xs">
+        <span class="inline-flex items-center text-amber-400 font-semibold gap-1 shrink-0">
+          <i data-lucide="map-pin" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
+          Treichville Marché Samsung · Magasin N° 234
+        </span>
+        <span class="hidden sm:inline text-neutral-500">·</span>
+        <span class="hidden md:inline text-neutral-400 truncate">
+          Vente de téléphones, ordinateurs, vêtements & divers
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 w-full bg-neutral-950/95 backdrop-blur-md border-b border-neutral-800">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Logo Brand -->
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <img src="logo.jpeg" alt="Pacifique Apple Store" width="44" height="44" class="shrink-0 rounded-full ring-1 ring-amber-400/40 w-9 h-9 sm:w-11 sm:h-11">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1">
+            <span class="font-extrabold tracking-wider text-amber-400 text-sm sm:text-lg uppercase leading-tight font-display">PACIFIQUE</span>
+            <span class="font-bold tracking-wider text-teal-400 text-xs sm:text-base uppercase leading-tight font-display">APPLE STORE</span>
+          </div>
+          <span class="text-[10px] sm:text-[11px] text-neutral-400 leading-tight truncate">Treichville · Magasin N° 234</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav links -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <a href="index.html" class="transition-colors pb-1 border-b-2 text-neutral-300 border-transparent hover:text-white">Accueil</a>
+        <a href="catalogue.html" class="transition-colors pb-1 border-b-2 text-amber-400 border-amber-400 font-semibold">Catalogue</a>
+        <a href="index.html#comment-commander" class="transition-colors pb-1 border-b-2 text-neutral-300 border-transparent hover:text-white">Comment commander</a>
+        <a href="index.html#boutique-treichville" class="transition-colors pb-1 border-b-2 text-neutral-300 border-transparent hover:text-white">Notre boutique</a>
+      </nav>
+
+      <!-- Desktop Search -->
+      <div class="hidden md:flex relative flex-1 max-w-xs mx-2">
+        <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+        <input type="text" id="desktopSearch" oninput="handleSearch(this.value)" placeholder="Rechercher iPhone, MacBook, Hoodie..." class="w-full pl-9 pr-3 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-xs text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-amber-500">
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        
+
+        <button onclick="openCart()" class="relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-bold text-xs rounded-lg shadow-lg shadow-amber-500/10 transition-all whitespace-nowrap min-h-[40px]">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span class="hidden xs:inline">Panier</span>
+          <span id="cartCountBadge" class="bg-neutral-950 text-amber-300 font-extrabold text-[11px] px-1.5 py-0.5 rounded-full ml-0.5 tabular-nums">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Search -->
+    <div class="md:hidden px-3 pb-2.5">
+      <div class="relative w-full">
+        <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+        <input type="text" id="mobileSearch" oninput="handleSearch(this.value)" placeholder="Rechercher un iPhone, vêtement, parfum..." class="w-full pl-9 pr-3 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-amber-500">
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  
+
+  <!-- ==================== CATALOG SECTION ==================== -->
+  <section id="catalogue" class="clair py-8 sm:py-12 min-h-[70vh] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <a href="index.html" class="inline-flex items-center gap-2 mb-6 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-sm font-semibold text-amber-400 hover:border-amber-400 transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i>Retour à l'accueil</a>
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">Notre Catalogue Exclusif</h2>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Sélectionnez vos articles et commandez directement sur WhatsApp</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-xl overflow-x-auto">
+        <button onclick="selectCategory('tous')" class="cat-tab px-3.5 py-2 text-xs font-semibold rounded-lg transition-all bg-amber-500 text-neutral-950 shadow-sm whitespace-nowrap" data-cat="tous">Tous</button>
+        <button onclick="selectCategory('appareils')" class="cat-tab px-3.5 py-2 text-xs font-semibold rounded-lg transition-all text-neutral-400 hover:text-white whitespace-nowrap" data-cat="appareils">Appareils</button>
+        <button onclick="selectCategory('vetements')" class="cat-tab px-3.5 py-2 text-xs font-semibold rounded-lg transition-all text-neutral-400 hover:text-white whitespace-nowrap" data-cat="vetements">Vêtements</button>
+        <button onclick="selectCategory('divers')" class="cat-tab px-3.5 py-2 text-xs font-semibold rounded-lg transition-all text-neutral-400 hover:text-white whitespace-nowrap" data-cat="divers">Divers</button>
+      </div>
+    </div>
+
+    <!-- Subcategories and Sort -->
+    <div class="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+      <div id="subcategoriesContainer" class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto py-1">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
+        <span class="text-neutral-500 font-medium">Trier par :</span>
+        <select id="sortSelect" onchange="handleSort(this.value)" class="bg-neutral-900 border border-neutral-800 text-neutral-300 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500">
+          <option value="featured">Populaires & Nouveautés</option>
+          <option value="price-asc">Prix : croissant</option>
+          <option value="price-desc">Prix : décroissant</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productsGrid" class="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-6 mt-4">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ==================== HOW TO ORDER (WHATSAPP) ==================== -->
+  
+
+  <!-- ==================== BOUTIQUE TREICHVILLE ==================== -->
+  
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-neutral-950 border-t border-neutral-800 text-neutral-400 text-xs py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 Pacifique Apple Store · Marché Samsung Treichville Magasin N° 234, Abidjan.
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-emerald-400 font-bold">WhatsApp : +225 01 52 58 95 15</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== PRODUCT DETAIL MODAL ==================== -->
+  <div id="productModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div onclick="closeProductModal()" class="fixed inset-0 bg-neutral-950/85 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-4xl bg-neutral-900 border border-neutral-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl z-10 text-neutral-100 flex flex-col md:flex-row max-h-[94vh]">
+      <button onclick="closeProductModal()" class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-neutral-950/80 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 min-h-[44px] min-w-[44px] flex items-center justify-center">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Image -->
+      <div class="md:w-1/2 relative bg-neutral-950 p-4 sm:p-6 border-b md:border-b-0 md:border-r border-neutral-800 flex flex-col justify-between shrink-0">
+        <div class="relative aspect-square rounded-xl overflow-hidden bg-neutral-900">
+          <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+          <span id="modalBadge" class="absolute top-3 left-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-neutral-950/90 text-amber-300 border border-amber-500/40"></span>
+        </div>
+        <div class="mt-3 text-xs text-neutral-400 space-y-1">
+          <div class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i> Garantie magasin 6 mois</div>
+          <div class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-teal-400"></i> Treichville Marché Samsung N° 234</div>
+        </div>
+      </div>
+
+      <!-- Modal Info & Options -->
+      <div class="md:w-1/2 flex flex-col justify-between overflow-y-auto">
+        <div class="p-4 sm:p-6 space-y-4">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-neutral-400 mb-1">
+              <span id="modalSubcat" class="uppercase tracking-wider text-amber-400 font-semibold text-[11px]"></span>
+              <span>·</span>
+              <span id="modalCondition" class="text-emerald-400 font-medium"></span>
+            </div>
+            <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-white font-display"></h2>
+            <div class="flex items-baseline gap-2 mt-2">
+              <span id="modalPrice" class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-display"></span>
+              <span id="modalOriginalPrice" class="text-sm text-neutral-500 line-through"></span>
+            </div>
+          </div>
+
+          <p id="modalDesc" class="text-xs sm:text-sm text-neutral-300 leading-relaxed"></p>
+
+          <!-- Storage Options -->
+          <div id="modalStorageGroup">
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase">Capacité</label>
+            <div id="modalStorageOptions" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Color Options -->
+          <div id="modalColorsGroup">
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase">Couleur</label>
+            <div id="modalColorOptions" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Size Options -->
+          <div id="modalSizesGroup">
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase">Taille</label>
+            <div id="modalSizeOptions" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Specs -->
+          <div>
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase">Inclus & Caractéristiques</label>
+            <ul id="modalSpecsList" class="space-y-1 text-xs text-neutral-300"></ul>
+          </div>
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="p-4 sm:p-6 pt-3 border-t border-neutral-800 bg-neutral-900/95 space-y-2.5">
+          <button id="modalWhatsAppBtn" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 min-h-[44px]">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Commander sur WhatsApp (+225 01 52 58 95 15)</span>
+          </button>
+          <button id="modalAddToCartBtn" class="w-full py-3 px-4 rounded-xl font-semibold text-xs bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 flex items-center justify-center gap-2 min-h-[42px]">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            <span>Ajouter au panier avec ces options</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CART DRAWER ==================== -->
+  <div id="cartDrawer" class="hidden fixed inset-0 z-50 overflow-hidden">
+    <div onclick="closeCart()" class="fixed inset-0 bg-neutral-950/85 backdrop-blur-sm"></div>
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+      <div class="w-screen max-w-full sm:max-w-md bg-neutral-900 border-l border-neutral-800 text-neutral-100 flex flex-col justify-between shadow-2xl">
+        <!-- Drawer Header -->
+        <div class="p-4 sm:p-5 border-b border-neutral-800 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+            <h2 class="font-bold text-base sm:text-lg text-white font-display">Mon Panier</h2>
+          </div>
+          <button onclick="closeCart()" class="p-2 rounded-lg bg-neutral-800 text-neutral-300 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Drawer Content -->
+        <div id="cartContent" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+          <!-- Injected by JavaScript -->
+        </div>
+
+        <!-- Drawer Footer -->
+        <div id="cartFooter" class="p-4 sm:p-5 border-t border-neutral-800 bg-neutral-950 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-neutral-400">Total estimé</span>
+            <span id="cartTotal" class="text-xl font-extrabold text-white tabular-nums font-display">0 FCFA</span>
+          </div>
+
+          <button onclick="checkoutWhatsApp()" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 min-h-[46px]">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Valider sur WhatsApp (+225 01 52 58 95 15)</span>
+          </button>
+          <div class="text-[10px] text-center text-neutral-500">Paiement à la livraison à Abidjan ou retrait en boutique Treichville</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING WHATSAPP ==================== -->
+  <aside class="hidden md:block fixed bottom-18 sm:bottom-6 right-3 sm:right-6 z-40">
+    <a href="https://wa.me/2250152589515?text=Bonjour%20Pacifique%20Apple%20Store%20!" target="_blank" class="flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xl transition-all duration-300 hover:scale-105 min-h-[44px]">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      <span class="hidden md:inline font-display">Commander sur WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- ==================== MOBILE BOTTOM NAV ==================== -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-neutral-950/95 backdrop-blur-lg border-t border-neutral-800 px-2 py-1">
+    <div class="grid grid-cols-4 items-center text-center">
+      <a href="index.html" class="flex flex-col items-center justify-center py-1 min-h-[48px] text-neutral-400 hover:text-white"><i data-lucide="home" class="w-5 h-5 mb-0.5"></i><span class="text-[10px]">Accueil</span></a>
+      <a href="catalogue.html" class="flex flex-col items-center justify-center py-1 min-h-[48px] text-amber-400"><i data-lucide="layout-grid" class="w-5 h-5 mb-0.5"></i><span class="text-[10px]">Catalogue</span></a>
+      <button onclick="openCart()" class="relative flex flex-col items-center justify-center py-1 min-h-[48px] text-neutral-400 hover:text-white">
+        <i data-lucide="shopping-bag" class="w-5 h-5 mb-0.5 text-amber-400"></i>
+        <span id="mobileCartBadge" class="absolute top-1 right-3 bg-amber-500 text-neutral-950 font-extrabold text-[9px] px-1 rounded-full">0</span>
+        <span class="text-[10px]">Panier</span>
+      </button>
+      <a href="https://wa.me/2250152589515?text=Bonjour%20Pacifique%20Apple%20Store%20!" target="_blank" class="flex flex-col items-center justify-center py-1 min-h-[48px] text-emerald-400">
+        <i data-lucide="message-circle" class="w-5 h-5 mb-0.5"></i>
+        <span class="text-[10px]">WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==================== CATALOG SCRIPT & LOGIC ==================== -->
+  <script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
